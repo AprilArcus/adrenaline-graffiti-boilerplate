@@ -2,7 +2,7 @@
 
 import React, { Component, PropTypes, findDOMNode } from 'react';
 import TodoList from 'client/components/TodoList';
-import * as todoMutations from '../mutations/todo';
+import * as todoMutations from 'client/mutations/todo';
 import { createSmartComponent } from 'adrenaline';
 
 class TodoApp extends Component {

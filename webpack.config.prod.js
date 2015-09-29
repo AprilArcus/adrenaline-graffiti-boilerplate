@@ -1,32 +1,18 @@
-var path = require('path');
 var webpack = require('webpack');
 
-module.exports = {
-  devtool: '#eval-cheap-source-map',
-  entry: path.join(__dirname, 'src', 'client'),
-  output: {
-    path: path.join(__dirname, '.tmp'),
-    filename: 'bundle.js'
-  },
-  plugins: [
-    new webpack.DefinePlugin({
-			'__CLIENT__': true
-		}),
-  ],
-  resolve: {
-    extensions: ['', '.js', '.jsx'],
-    root: [
-      path.join(__dirname, 'node_modules'),
-      path.join(__dirname, 'src')
-    ],
-  },
-  module: {
-    loaders: [
-      {
-        test: /\.jsx?$/,
-        exclude: /node_modules/,
-        loader: 'babel?optional[]=runtime&stage=0'
-      }
-    ]
-  }
-};
+var config = require('./webpack.config.js');
+config.devtool = 'source-map';
+config.plugins = config.plugins.concat([
+  new webpack.optimize.OccurenceOrderPlugin(),
+  new webpack.DefinePlugin({
+    'process.env': {
+      'NODE_ENV': JSON.stringify('production')
+    }
+  }),
+  new webpack.optimize.UglifyJsPlugin({
+    compressor: {
+      warnings: false
+    }
+  })
+]);
+module.exports = config;

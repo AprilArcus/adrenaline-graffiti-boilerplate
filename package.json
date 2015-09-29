@@ -3,8 +3,11 @@
   "version": "0.0.1",
   "description": "",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js"
+    "clean": "rimraf dist",
+    "build:webpack": "NODE_ENV=production webpack --config webpack.config.prod.js",
+    "build": "npm run clean && npm run build:webpack",
+    "start": "node index.js",
+    "lint": "eslint src"
   },
   "repository": {
     "type": "git",
@@ -13,11 +16,17 @@
   "author": "April Arcus <april.arcus@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "@risingstack/graffiti": "^1.0.2",
+    "@risingstack/graffiti-mongoose": "^1.4.1",
     "adrenaline": "^0.10.6",
+    "app-module-path": "^1.0.4",
     "body-parser": "^1.13.3",
     "express": "^4.13.3",
     "express-graphql": "^0.3.0",
+    "glob": "^5.0.15",
     "graphql": "^0.4.4",
+    "inflect": "^0.3.0",
+    "mongoose": "^4.1.0",
     "multer": "^1.0.3",
     "react": "^0.13.3",
     "react-redux": "^2.0.0",
