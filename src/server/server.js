@@ -1,6 +1,7 @@
 /* @flow */
 
 import express from 'express';
+import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
 import { express as graffitiMiddleware } from '@risingstack/graffiti';
 import * as adapter from '@risingstack/graffiti-mongoose';
@@ -13,6 +14,8 @@ const publicPath = join(__dirname, '..', '..', 'dist');
 server.use('/public', express.static(publicPath));
 
 mongoose.connect('mongodb://localhost/graphql');
+
+server.use(bodyParser.json());
 
 server.use(graffitiMiddleware({
   prefix: '/graphql',

@@ -16,11 +16,11 @@
   "author": "April Arcus <april.arcus@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "@risingstack/graffiti": "^1.0.2",
+    "@risingstack/graffiti": "AprilArcus/graffiti#post-request",
     "@risingstack/graffiti-mongoose": "^1.4.1",
     "adrenaline": "^0.10.6",
     "app-module-path": "^1.0.4",
-    "body-parser": "^1.13.3",
+    "body-parser": "^1.14.1",
     "express": "^4.13.3",
     "express-graphql": "^0.3.0",
     "glob": "^5.0.15",
